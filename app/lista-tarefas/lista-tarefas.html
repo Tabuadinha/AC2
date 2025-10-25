@@ -1,0 +1,26 @@
+<h3>Lista de Tarefas</h3>
+
+@if (Tarefas.length === 0) {
+  <p class="text-muted">Nenhuma tarefa cadastrada.</p>
+} @else {
+  <ul class="list-group" style="max-width:620px">
+    @for (t of Tarefas; track t.id) {
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ t.titulo }}</strong>
+          <small class="text-muted d-block">
+            {{ t.titulo }} — {{ t.prazo }} @if (t.titulo) { • {{ t.prazo }} }
+          </small>
+        </div>
+        <button class="btn btn-outline-danger btn-sm" (click)="remover(t.id)">Remover</button>
+      </li>
+    }
+    <nav>
+        <a routerLink="/tarefa-service" routerLinkActive="ativo"></a> |
+      </nav>
+    
+      <hr />
+    
+      <router-outlet></router-outlet>
+  </ul>
+}
